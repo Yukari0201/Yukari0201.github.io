@@ -20,25 +20,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="喵呜～">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yukari0201&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="桌面环境：GNOME(Wayland)本教程也适用于 x11 安装 Fcitx5  + 中文插件1sudo pacman -S fcitx5-im fcitx5-chinese-addons  设置环境变量1sudo gedit &#x2F;etc&#x2F;environment （你可以将 gedit 换为其他文本编辑器，例如 vim 1sudo vim &#x2F;etc&#x2F;environment 写入以下几行 12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arch Linux 安装和配置 Fcitx5 输入法">
+<meta property="og:url" content="http://example.com/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/index.html">
 <meta property="og:site_name" content="Yukari0201&#39;s Blog">
-<meta property="og:description" content="喵呜～">
+<meta property="og:description" content="桌面环境：GNOME(Wayland)本教程也适用于 x11 安装 Fcitx5  + 中文插件1sudo pacman -S fcitx5-im fcitx5-chinese-addons  设置环境变量1sudo gedit &#x2F;etc&#x2F;environment （你可以将 gedit 换为其他文本编辑器，例如 vim 1sudo vim &#x2F;etc&#x2F;environment 写入以下几行 12345">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/:/294e22079eed4e809a4cec91a7703a13">
+<meta property="article:published_time" content="2023-12-09T10:11:39.000Z">
+<meta property="article:modified_time" content="2023-12-09T10:28:28.429Z">
 <meta property="article:author" content="Yukari0201">
+<meta property="article:tag" content="Arch">
+<meta property="article:tag" content="Fcitx5">
+<meta property="article:tag" content="GNOME">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/:/294e22079eed4e809a4cec91a7703a13">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/","path":"2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/","title":"Arch Linux 安装和配置 Fcitx5 输入法"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Yukari0201's Blog</title>
+<title>Arch Linux 安装和配置 Fcitx5 输入法 | Yukari0201's Blog</title>
   
 
 
@@ -68,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Yukari0201's Blog</h1>
+      <p class="site-title">Yukari0201's Blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Yukari0201's Time Machine</p>
@@ -91,7 +98,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -104,6 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Fcitx5-%E4%B8%AD%E6%96%87%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安装 Fcitx5  + 中文插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Input-Method-Panel-%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">安装 Input Method Panel 扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E3%80%81-%E6%8E%A8%E8%8D%90-%E5%AE%89%E8%A3%85-AUR-%E8%BD%AF%E4%BB%B6%E5%8C%85-gnome-shell-extension-kimpanel-git"><span class="nav-number">3.1.</span> <span class="nav-text">方法一、[推荐] 安装 AUR 软件包 gnome-shell-extension-kimpanel-git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E3%80%81%E4%BB%8E-GNOME-Shell-Extensions-%E7%BD%91%E7%AB%99%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">方法二、从 GNOME Shell Extensions 网站安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-gnome-browser-connector"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装 gnome-browser-connector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E8%83%BD%E5%8F%AF%E9%80%89%EF%BC%88%EF%BC%9F%EF%BC%89%E5%AE%89%E8%A3%85%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">可能可选（？）安装浏览器扩展：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Kimpanel-GNOME-Shell-%E6%89%A9%E5%B1%95"><span class="nav-number">3.2.3.</span> <span class="nav-text">安装 Kimpanel GNOME Shell 扩展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90-%E5%AE%89%E8%A3%85%E8%AF%8D%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">[推荐] 安装词库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BC%80%E5%BF%83%E6%89%93%E5%AD%97%E4%BA%86%E5%96%B5%EF%BD%9E"><span class="nav-number">5.</span> <span class="nav-text">最后就可以开心打字了喵～</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">6.</span> <span class="nav-text">常见问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -138,16 +146,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -161,13 +170,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yukari0201's Blog">
+      <meta itemprop="name" content="Arch Linux 安装和配置 Fcitx5 输入法 | Yukari0201's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/" class="post-title-link" itemprop="url">Arch Linux 安装和配置 Fcitx5 输入法</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Arch Linux 安装和配置 Fcitx5 输入法
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -190,8 +199,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <p>桌面环境：<br>GNOME(Wayland)<br>本教程也适用于 x11</p>
+    <div class="post-body" itemprop="articleBody"><p>桌面环境：<br>GNOME(Wayland)<br>本教程也适用于 x11</p>
 <h2 id="安装-Fcitx5-中文插件"><a href="#安装-Fcitx5-中文插件" class="headerlink" title="安装 Fcitx5  + 中文插件"></a>安装 Fcitx5  + 中文插件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-im fcitx5-chinese-addons</span><br></pre></td></tr></table></figure>
 
 <h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/environment</span><br></pre></td></tr></table></figure>
@@ -225,7 +233,6 @@
 
 <h2 id="最后就可以开心打字了喵～"><a href="#最后就可以开心打字了喵～" class="headerlink" title="最后就可以开心打字了喵～"></a>最后就可以开心打字了喵～</h2><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>部分 Wayland 应用无法使用输入法</p>
 
-      
     </div>
 
     
@@ -233,81 +240,27 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/Arch/" rel="tag"># Arch</a>
+              <a href="/tags/Fcitx5/" rel="tag"># Fcitx5</a>
+              <a href="/tags/GNOME/" rel="tag"># GNOME</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/09/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yukari0201">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yukari0201's Blog">
-      <meta itemprop="description" content="喵呜～">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yukari0201's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/09/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-12-09 16:46:04 / 修改时间：16:54:19" itemprop="dateCreated datePublished" datetime="2023-12-09T16:46:04+08:00">2023-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Hello World!</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
