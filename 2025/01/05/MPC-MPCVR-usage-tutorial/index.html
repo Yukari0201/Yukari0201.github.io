@@ -20,25 +20,50 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="喵呜～">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yukari0201&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="观前声明本人将主力播放器换成了 mpv 已经有很长一段时间了，所以本篇教程的更新或许不会那么及时。我的 mpv 自用配置：https:&#x2F;&#x2F;github.com&#x2F;Yukari0201&#x2F;mpv-config 本教程基于 Windows11 编写，兼容 Windows10 (x64)。32位 或 更低版本的 Windows 不保证兼容。 由于个人更喜欢使用 MPC-BE ，所以本教程更侧重于 MPC-B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MPC-BE&#x2F;HC + MPCVR 使用教程">
+<meta property="og:url" content="http://example.com/2025/01/05/MPC-MPCVR-usage-tutorial/index.html">
 <meta property="og:site_name" content="Yukari0201&#39;s Blog">
-<meta property="og:description" content="喵呜～">
+<meta property="og:description" content="观前声明本人将主力播放器换成了 mpv 已经有很长一段时间了，所以本篇教程的更新或许不会那么及时。我的 mpv 自用配置：https:&#x2F;&#x2F;github.com&#x2F;Yukari0201&#x2F;mpv-config 本教程基于 Windows11 编写，兼容 Windows10 (x64)。32位 或 更低版本的 Windows 不保证兼容。 由于个人更喜欢使用 MPC-BE ，所以本教程更侧重于 MPC-B">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Install_Select-Components.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-HC_Install_Select-Components.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Settings.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Settings-Audio.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Settings-Audio-Processing.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_MPCAD.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_MPCVD.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-HC_Settings.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-HC_Settings-Audio.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/LAVAD_Mixing.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/LAVAD_Audio-Settings.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/LAVVD.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/LAV_Enable-Sysytem-Tray-Icon.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/LAV_Tray-Icons.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Settings_MPCVR.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-HC_Settings_MPCVR.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPCVR_default.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPCVR_custom.png">
+<meta property="article:published_time" content="2025-01-05T12:16:45.000Z">
+<meta property="article:modified_time" content="2025-01-16T12:29:38.890Z">
 <meta property="article:author" content="Yukari0201">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="DirectShow">
+<meta property="article:tag" content="MPC-BE">
+<meta property="article:tag" content="MPC-HC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/Yukari0201/Blog-CDN@main/images/MPC-MPCVR-usage-tutorial/MPC-BE_Install_Select-Components.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2025/01/05/MPC-MPCVR-usage-tutorial/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/01/05/MPC-MPCVR-usage-tutorial/","path":"2025/01/05/MPC-MPCVR-usage-tutorial/","title":"MPC-BE/HC + MPCVR 使用教程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Yukari0201's Blog</title>
+<title>MPC-BE/HC + MPCVR 使用教程 | Yukari0201's Blog</title>
   
 
 
@@ -71,7 +96,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Yukari0201's Blog</h1>
+      <p class="site-title">Yukari0201's Blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Yukari0201's Time Machine</p>
@@ -98,7 +123,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -111,6 +136,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%82%E5%89%8D%E5%A3%B0%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">观前声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B%EF%BC%8C%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8%E2%80%94%E2%80%94%E5%AE%89%E8%A3%85%E5%90%84%E6%92%AD%E6%94%BE%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">兵欲善其事，必先利其器——安装各播放器组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-BE-MPCVR"><span class="nav-number">3.1.</span> <span class="nav-text">安装 MPC-BE + MPCVR</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-BE"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装 MPC-BE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-Video-Renderer"><span class="nav-number">3.1.2.</span> <span class="nav-text">安装 MPC Video Renderer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-HC-MPCVR"><span class="nav-number">3.2.</span> <span class="nav-text">安装 MPC-HC + MPCVR</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-HC"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装 MPC-HC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MPC-Video-Renderer-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">安装 MPC Video Renderer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E7%BB%99-scoop-%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">写给 scoop 用户：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-scoop-%E5%AE%89%E8%A3%85-MPC-BE-MPCVR"><span class="nav-number">3.3.1.</span> <span class="nav-text">用 scoop 安装 MPC-BE + MPCVR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-scoop-%E5%AE%89%E8%A3%85-MPC-HC-MPCVR"><span class="nav-number">3.3.2.</span> <span class="nav-text">用 scoop 安装 MPC-HC + MPCVR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%B0%83%E6%95%99-MPC-BE-MPC-HC"><span class="nav-number">4.</span> <span class="nav-text">简单调教 MPC-BE &#x2F; MPC-HC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%B0%83%E6%95%99-MPC-BE"><span class="nav-number">4.1.</span> <span class="nav-text">简单调教 MPC-BE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E9%83%A8%E5%88%86"><span class="nav-number">4.1.1.</span> <span class="nav-text">音频部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E9%83%A8%E5%88%86"><span class="nav-number">4.1.2.</span> <span class="nav-text">视频部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="nav-number">4.1.3.</span> <span class="nav-text">杂项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%B0%83%E6%95%99-MPC-HC"><span class="nav-number">4.2.</span> <span class="nav-text">简单调教 MPC-HC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E9%83%A8%E5%88%86-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">音频部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E9%83%A8%E5%88%86-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">视频部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">杂项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPCVR-%E6%8E%A8%E8%8D%90%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">MPCVR 推荐设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A9-MPC-BE-HC-%E4%BD%BF%E7%94%A8-MPCVR-%E4%BD%9C%E4%B8%BA%E8%A7%86%E9%A2%91%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-number">5.1.</span> <span class="nav-text">让 MPC-BE&#x2F;HC 使用 MPCVR 作为视频渲染器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MPC-BE-%E4%BD%BF%E7%94%A8-MPCVR-%E4%BD%9C%E4%B8%BA%E8%A7%86%E9%A2%91%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-number">5.1.1.</span> <span class="nav-text">MPC-BE 使用 MPCVR 作为视频渲染器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MPC-HC-%E4%BD%BF%E7%94%A8-MPCVR-%E4%BD%9C%E4%B8%BA%E8%A7%86%E9%A2%91%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-number">5.1.2.</span> <span class="nav-text">MPC-HC 使用 MPCVR 作为视频渲染器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4-MPCVR-%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">调整 MPCVR 的设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1-%E2%9C%BF%E3%83%BD-%C2%B0%E2%96%BD%C2%B0-%E3%83%8E%E2%9C%BF"><span class="nav-number">6.</span> <span class="nav-text">完结撒花 ✿ヽ(°▽°)ノ✿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TODOs"><span class="nav-number">6.1.</span> <span class="nav-text">TODOs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B%E6%8C%87%E8%B7%AF"><span class="nav-number">6.2.</span> <span class="nav-text">一些有用的教程指路</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -150,16 +176,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/05/MPC-MPCVR-usage-tutorial/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -173,13 +200,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yukari0201's Blog">
+      <meta itemprop="name" content="MPC-BE/HC + MPCVR 使用教程 | Yukari0201's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/05/MPC-MPCVR-usage-tutorial/" class="post-title-link" itemprop="url">MPC-BE/HC + MPCVR 使用教程</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          MPC-BE/HC + MPCVR 使用教程
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -208,8 +235,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="观前声明"><a href="#观前声明" class="headerlink" title="观前声明"></a>观前声明</h2><p>本人将主力播放器换成了 mpv 已经有很长一段时间了，所以本篇教程的更新或许不会那么及时。<br>我的 mpv 自用配置：<a target="_blank" rel="noopener" href="https://github.com/Yukari0201/mpv-config">https://github.com/Yukari0201/mpv-config</a></p>
+    <div class="post-body" itemprop="articleBody"><h2 id="观前声明"><a href="#观前声明" class="headerlink" title="观前声明"></a>观前声明</h2><p>本人将主力播放器换成了 mpv 已经有很长一段时间了，所以本篇教程的更新或许不会那么及时。<br>我的 mpv 自用配置：<a target="_blank" rel="noopener" href="https://github.com/Yukari0201/mpv-config">https://github.com/Yukari0201/mpv-config</a></p>
 <p>本教程基于 Windows11 编写，兼容 Windows10 (x64)。<br>32位 或 更低版本的 Windows 不保证兼容。</p>
 <p>由于个人更喜欢使用 MPC-BE ，所以本教程更侧重于 MPC-BE + MPCVR，但也会给出 MPC-HC 的推荐设置。</p>
 <p>由于我 <a target="_blank" rel="noopener" href="https://scoop.sh/">scoop</a> 用入魔了，所以增加了一些 scoop 相关的内容。<strong>不明白请直接跳过</strong>。</p>
@@ -432,7 +458,6 @@
 </li>
 </ul>
 
-      
     </div>
 
     
@@ -440,212 +465,28 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/DirectShow/" rel="tag"># DirectShow</a>
+              <a href="/tags/MPC-BE/" rel="tag"># MPC-BE</a>
+              <a href="/tags/MPC-HC/" rel="tag"># MPC-HC</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/04/Thoughts/" rel="prev" title="碎碎念">
+                  <i class="fa fa-angle-left"></i> 碎碎念
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/04/Thoughts/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yukari0201">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yukari0201's Blog">
-      <meta itemprop="description" content="喵呜～">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yukari0201's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/04/Thoughts/" class="post-title-link" itemprop="url">碎碎念</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-10-04 17:34:07 / 修改时间：17:58:39" itemprop="dateCreated datePublished" datetime="2024-10-04T17:34:07+08:00">2024-10-04</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><details>
-<summary>_ ◂</summary>
-
-<p>就算哪天我不在了，<a target="_blank" rel="noopener" href="https://yukari0201.github.io/">Github Pages</a> 和 <a target="_blank" rel="noopener" href="https://yukari0201-github-io.pages.dev/">Cloudflare Paages</a> 也能让这个 Blog 在 Internet 上存在很长时间…</p>
-<p>更别提 <a target="_blank" rel="noopener" href="https://github.com/Yukari0201/Yukari0201.github.io">Github Repo</a> 的 <a target="_blank" rel="noopener" href="https://github.com/Yukari0201/Yukari0201.github.io/tree/hexo">hexo 分支</a>，完美备份了整个 Blog…</p>
-<hr>
-<p>似乎嘛，可以用来做死后的赛博墓碑</p>
-<p>嘻嘻</p>
-<hr>
-</details>
-
-<p>不要在意哦～<br>我时常如此。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yukari0201">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yukari0201's Blog">
-      <meta itemprop="description" content="喵呜～">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yukari0201's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/09/installing-and-configuring-fcitx5-on-arch-linux/" class="post-title-link" itemprop="url">Arch Linux 安装和配置 Fcitx5 输入法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-09 18:11:39" itemprop="dateCreated datePublished" datetime="2023-12-09T18:11:39+08:00">2023-12-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-11 10:54:41" itemprop="dateModified" datetime="2023-12-11T10:54:41+08:00">2023-12-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>桌面环境：<br>GNOME(Wayland)<br>本教程也适用于 x11</p>
-<h2 id="安装-Fcitx5-中文插件"><a href="#安装-Fcitx5-中文插件" class="headerlink" title="安装 Fcitx5  + 中文插件"></a>安装 Fcitx5  + 中文插件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-im fcitx5-chinese-addons</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/environment</span><br></pre></td></tr></table></figure>
-<p>（你可以将 gedit 换为其他文本编辑器，例如 vim</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/environment</span><br></pre></td></tr></table></figure>
-<p>在文件末尾写入以下几行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line">XMODIFIERS=@im=fcitx</span><br><span class="line">SDL_IM_MODULE=fcitx</span><br><span class="line">GLFW_IM_MODULE=ibus</span><br></pre></td></tr></table></figure>
-
-<p><strong>注销并重新登录</strong>后，其实就已经可以使用输入法了喵～<br>（按 <code>Ctrl+空格</code> 即可激活输入法喵～</p>
-<p>不过强烈建议继续进行接下来的配置喵～</p>
-<h2 id="推荐-安装词库"><a href="#推荐-安装词库" class="headerlink" title="[推荐] 安装词库"></a>[推荐] 安装词库</h2><p>安装官方存储库中的 fcitx5-pinyin-zhwiki</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-pinyin-zhwiki</span><br></pre></td></tr></table></figure>
-
-<p>安装 archlinuxcn 存储库中的 fcitx5-pinyin-moegirl</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-pinyin-moegirl</span><br></pre></td></tr></table></figure>
-<p>如果不使用 archlinuxcn 仓库，可以从 AUR 安装<br>例如使用 paru 作为 AUR helper 时</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S fcitx5-pinyin-moegirl</span><br></pre></td></tr></table></figure>
-
-<p>这两个词库一般足以应付日常使用了<br>如果你还不满意…<br>可以…</p>
-<ul>
-<li>启用云拼音（快捷键 <code>Ctrl+Alt+Shift+C</code> ）</li>
-<li>查找更多词库…<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -Ss fcitx5-pinyin</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>P.S. 我比较推荐安装 <code>aur/fcitx5-pinyin-custom-pinyin-dictionary</code><br>由 <a target="_blank" rel="noopener" href="https://github.com/wuhgit/CustomPinyinDictionary">@wuhgit&#x2F;CustomPinyinDictionary</a> 维护</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S fcitx5-pinyin-custom-pinyin-dictionary</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装-Input-Method-Panel-扩展"><a href="#安装-Input-Method-Panel-扩展" class="headerlink" title="安装 Input Method Panel 扩展"></a>安装 Input Method Panel 扩展</h2><p>如果不安装，可能无法在 GNOME 的活动界面显示输入法窗口（例如搜索框）</p>
-<h3 id="方法一、-推荐-安装-AUR-软件包-gnome-shell-extension-kimpanel-git"><a href="#方法一、-推荐-安装-AUR-软件包-gnome-shell-extension-kimpanel-git" class="headerlink" title="方法一、[推荐] 安装 AUR 软件包 gnome-shell-extension-kimpanel-git"></a>方法一、[推荐] 安装 AUR 软件包 gnome-shell-extension-kimpanel-git</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S gnome-shell-extension-kimpanel-git</span><br></pre></td></tr></table></figure>
-
-<p>然后在“扩展”中启用 “Kimpanel GNOME Shell”</p>
-<h3 id="方法二、从-GNOME-Shell-Extensions-网站安装"><a href="#方法二、从-GNOME-Shell-Extensions-网站安装" class="headerlink" title="方法二、从 GNOME Shell Extensions 网站安装"></a>方法二、从 GNOME Shell Extensions 网站安装</h3><h4 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h4><ol>
-<li><p>安装 gnome-browser-connector</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S gnome-browser-connector</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可能可选(?)安装浏览器扩展<br>参见: <a target="_blank" rel="noopener" href="https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration/Installation#Distro_packages">https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration/Installation#Distro_packages</a></p>
-</li>
-</ol>
-<h4 id="安装-Kimpanel-GNOME-Shell-扩展"><a href="#安装-Kimpanel-GNOME-Shell-扩展" class="headerlink" title="安装 Kimpanel GNOME Shell 扩展"></a>安装 Kimpanel GNOME Shell 扩展</h4><p>访问 GNOME Shell Extensions 网站，安装并启用 Input Method Panel 扩展即可<br><a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/261/kimpanel/">https://extensions.gnome.org/extension/261/kimpanel/</a></p>
-<h2 id="最后就可以开心打字了喵～"><a href="#最后就可以开心打字了喵～" class="headerlink" title="最后就可以开心打字了喵～"></a>最后就可以开心打字了喵～</h2><p>打字愉快喵～</p>
-<p>有兴趣可以参考 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitx5">ArchWiki</a> 或 <a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Fcitx5">Arch Linux 中文维基</a> 折腾 Fcitx5 的配置喵～</p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
-<li>部分 Wayland 应用无法使用输入法</li>
-<li>…</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
