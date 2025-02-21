@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开始之前的一点私货（逃我的 mpv 自用配置：https:&#x2F;&#x2F;github.com&#x2F;Yukari0201&#x2F;mpv-config 联系阅读：[Tip]使用yt-dlp增强mpv player流媒体解析能力&amp;解锁登陆用户分辨率本文是对此篇文章的补充 观前提醒(消歧义)本篇所讲的播放在线视频的方案为 mpv + yt-dlp，  而非 ff2mpv、Play-With-MPV、使用 MPV 播放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优化 mpv 播放器的在线视频体验">
+<meta property="og:url" content="http://example.com/2025/02/08/mpv-streaming-media/index.html">
+<meta property="og:site_name" content="Yukari0201&#39;s Blog">
+<meta property="og:description" content="开始之前的一点私货（逃我的 mpv 自用配置：https:&#x2F;&#x2F;github.com&#x2F;Yukari0201&#x2F;mpv-config 联系阅读：[Tip]使用yt-dlp增强mpv player流媒体解析能力&amp;解锁登陆用户分辨率本文是对此篇文章的补充 观前提醒(消歧义)本篇所讲的播放在线视频的方案为 mpv + yt-dlp，  而非 ff2mpv、Play-With-MPV、使用 MPV 播放">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/">
+<meta property="article:published_time" content="2025-02-08T03:56:25.000Z">
+<meta property="article:modified_time" content="2025-02-21T09:49:22.202Z">
+<meta property="article:author" content="Yukari0201">
+<meta property="article:tag" content="Media Player">
+<meta property="article:tag" content="mpv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/">
+
+
+<link rel="canonical" href="http://example.com/2025/02/08/mpv-streaming-media/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/02/08/mpv-streaming-media/","path":"2025/02/08/mpv-streaming-media/","title":"优化 mpv 播放器的在线视频体验"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>优化 mpv 播放器的在线视频体验 | Yukari0201's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Yukari0201's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Yukari0201's Time Machine</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%82%B9%E7%A7%81%E8%B4%A7%EF%BC%88%E9%80%83"><span class="nav-number">1.</span> <span class="nav-text">开始之前的一点私货（逃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%82%E5%89%8D%E6%8F%90%E9%86%92-%E6%B6%88%E6%AD%A7%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">观前提醒(消歧义)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%AD%A3%E6%96%87%E5%BC%80%E5%A7%8B%E5%89%8D%E8%AE%B2%E4%B8%80%E4%B8%8B-mpv-%E6%92%AD%E6%94%BE%E5%99%A8%E5%A6%82%E4%BD%95%E6%92%AD%E6%94%BE%E5%9C%A8%E7%BA%BF%E8%A7%86%E9%A2%91"><span class="nav-number">4.</span> <span class="nav-text">在正文开始前讲一下 mpv 播放器如何播放在线视频</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8B%96%E9%93%BE%E6%8E%A5"><span class="nav-number">4.1.</span> <span class="nav-text">直接拖链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%84%9A%E6%9C%AC-console-lua-%E7%94%A8%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">内置控制台脚本(console.lua)用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%94%A8%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">命令行用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98-cache-%E9%83%A8%E5%88%86"><span class="nav-number">5.</span> <span class="nav-text">缓存(cache) 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%EF%BC%8C%E4%B8%80%E4%B8%80%E8%AE%B2%E8%A7%A3%E8%BF%99%E4%BA%9B%E9%80%89%E9%A1%B9"><span class="nav-number">5.1.</span> <span class="nav-text">接下来，一一讲解这些选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E7%9A%84-ytdl-hook-%E8%84%9A%E6%9C%AC%E7%9B%B8%E5%85%B3"><span class="nav-number">6.</span> <span class="nav-text">内置的 ytdl_hook 脚本相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">前提条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%9C%E5%AE%89%E8%A3%85%E2%80%9D-yt-dlp"><span class="nav-number">6.1.1.</span> <span class="nav-text">“安装” yt-dlp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ytdl-hook-%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">6.2.</span> <span class="nav-text">ytdl_hook 脚本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E9%80%89%E9%A1%B9%E9%83%A8%E5%88%86"><span class="nav-number">6.2.1.</span> <span class="nav-text">常规选项部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%93ytdl-raw-options-%E9%83%A8%E5%88%86"><span class="nav-number">6.2.2.</span> <span class="nav-text">–ytdl-raw-options 部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#script-opts-ytdl-hook-conf-%E9%83%A8%E5%88%86%EF%BC%88%E2%80%93script-opts-%E9%83%A8%E5%88%86%EF%BC%89"><span class="nav-number">6.2.3.</span> <span class="nav-text">script-opts&#x2F;ytdl_hook.conf 部分（–script-opts 部分）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E7%9B%B8%E5%85%B3"><span class="nav-number">7.</span> <span class="nav-text">代理相关</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yukari0201</p>
+  <div class="site-description" itemprop="description">喵呜～</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yukari0201" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yukari0201" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/08/mpv-streaming-media/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yukari0201">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukari0201's Blog">
+      <meta itemprop="description" content="喵呜～">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="优化 mpv 播放器的在线视频体验 | Yukari0201's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          优化 mpv 播放器的在线视频体验
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-08 11:56:25" itemprop="dateCreated datePublished" datetime="2025-02-08T11:56:25+08:00">2025-02-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-21 17:49:22" itemprop="dateModified" datetime="2025-02-21T17:49:22+08:00">2025-02-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="开始之前的一点私货（逃"><a href="#开始之前的一点私货（逃" class="headerlink" title="开始之前的一点私货（逃"></a>开始之前的一点私货（逃</h2><p>我的 mpv 自用配置：<a target="_blank" rel="noopener" href="https://github.com/Yukari0201/mpv-config">https://github.com/Yukari0201/mpv-config</a></p>
+<p>联系阅读：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv21234242">[Tip]使用yt-dlp增强mpv player流媒体解析能力&amp;解锁登陆用户分辨率</a><br>本文是对此篇文章的补充</p>
+<h2 id="观前提醒-消歧义"><a href="#观前提醒-消歧义" class="headerlink" title="观前提醒(消歧义)"></a>观前提醒(消歧义)</h2><p>本篇所讲的播放在线视频的方案为 <strong>mpv</strong> + <strong>yt-dlp</strong>， </p>
+<p>而非 <strong>ff2mpv</strong>、<strong>Play-With-MPV</strong>、<strong>使用 MPV 播放 + mpv-handler</strong> 这样的 扩展&#x2F;脚本 方案</p>
+<p>提到的 扩展&#x2F;脚本：  </p>
+<ul>
+<li>ff2mpv <a target="_blank" rel="noopener" href="https://github.com/woodruffw/ff2mpv">https://github.com/woodruffw/ff2mpv</a></li>
+<li>Play-With-MPV <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/444056-play-with-mpv">https://greasyfork.org/zh-CN/scripts/444056-play-with-mpv</a></li>
+<li>使用 MPV 播放（需配合 mpv-handler 使用） <a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/416271-play-with-mpv">https://greasyfork.org/zh-CN/scripts/416271-play-with-mpv</a></li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>在正文开始前讲一下 mpv 播放器如何播放在线视频</li>
+</ul>
+<h2 id="在正文开始前讲一下-mpv-播放器如何播放在线视频"><a href="#在正文开始前讲一下-mpv-播放器如何播放在线视频" class="headerlink" title="在正文开始前讲一下 mpv 播放器如何播放在线视频"></a>在正文开始前讲一下 mpv 播放器如何播放在线视频</h2><h3 id="直接拖链接"><a href="#直接拖链接" class="headerlink" title="直接拖链接"></a>直接拖链接</h3><p>请参考 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nQ4y1a7gw?p=2">【软件分享】开源的全平台视频播放器MPV 使用教程 p02</a> 的演示</p>
+<h3 id="内置控制台脚本-console-lua-用法"><a href="#内置控制台脚本-console-lua-用法" class="headerlink" title="内置控制台脚本(console.lua)用法"></a>内置控制台脚本(console.lua)用法</h3><p>联系阅读：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv27512307">[Tip]使用mpv自带控制台脚本console.lua执行输入命令</a></p>
+<p>打开 mpv 播放器，使用快捷键 <strong>&#96;</strong> 打开内置 console<br>然后输入下面的内容，并回车</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadfile &lt;视频链接&gt;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadfile https://www.bilibili.com/video/BV1qM4y1w716/</span><br></pre></td></tr></table></figure>
+
+<p>注意：视频链接中不能有特殊字符，如果有，请将视频链接用半角引号( “” 或 ‘’ )包裹起来</p>
+<h3 id="命令行用法"><a href="#命令行用法" class="headerlink" title="命令行用法"></a>命令行用法</h3><p>前提条件：你已经将 mpv 的路径添加到了 环境变量 PATH 中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpv &lt;视频链接&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：视频链接中不能有特殊字符，如果有，请将视频链接用半角引号( “” 或 ‘’ )包裹起来</p>
+<h2 id="缓存-cache-部分"><a href="#缓存-cache-部分" class="headerlink" title="缓存(cache) 部分"></a>缓存(cache) 部分</h2><p>mpv 播放器的缓存(cache)用来提前读取数据，提供更流畅的播放体验，避免播放过程中的卡顿或跳帧（常见原因：网络波动、磁盘延迟）</p>
+<p>相关选项参见官方手册：<br><a target="_blank" rel="noopener" href="https://mpv.io/manual/master/#cache">https://mpv.io/manual/master/#cache</a><br><a target="_blank" rel="noopener" href="https://mpv.io/manual/master/#demuxer">https://mpv.io/manual/master/#demuxer</a></p>
+<p>我挑出了几个比较有用的选项，并更改为适用于大部分场景的配置，你可以参考一下  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cache=auto</span><br><span class="line">cache-on-disk=no</span><br><span class="line">demuxer-max-bytes=150MiB</span><br><span class="line">demuxer-max-back-bytes=50MiB</span><br><span class="line">demuxer-hysteresis-secs=10</span><br></pre></td></tr></table></figure>
+
+<h3 id="接下来，一一讲解这些选项"><a href="#接下来，一一讲解这些选项" class="headerlink" title="接下来，一一讲解这些选项"></a>接下来，一一讲解这些选项</h3><blockquote>
+<p><code>--cache=auto</code>  </p>
+</blockquote>
+<p>可选值 &lt;<code>yes</code>|<code>no</code>|<code>auto</code>&gt;(默认 <code>auto</code>)<br><code>yes</code> - 对所有视频启用缓存<br><code>no</code> - 对所有视频不启用缓存<br><code>auto</code> - 可以简单理解为：根据视频是否为是为网络链接来决定是否启用缓存。即：对网络视频启用缓存，对本地视频不启用缓存</p>
+<p>我建议保持默认值 <code>auto</code>，除非你的磁盘掉速才建议使用 <code>yes</code></p>
+<blockquote>
+<p><code>--cache-on-disk=no</code></p>
+</blockquote>
+<p>可选值 &lt;<code>yes</code>|<code>no</code>&gt;</p>
+<p><code>yes</code> - 将缓存写入一个磁盘上的临时文件(由 <code>--demuxer-cache-dir=&lt;path&gt;</code> 指定)<br><code>no</code> - 将缓存写入内存  </p>
+<blockquote>
+<p><code>--demuxer-max-bytes=150MiB</code><br><code>--demuxer-max-back-bytes=50MiB</code></p>
+</blockquote>
+<p><code>--demuxer-max-bytes</code> 最大向后缓存大小，默认 150MiB</p>
+<p><code>--demuxer-max-back-bytes</code> 最大允许保留的已播放的内容的数据大小，默认 50MiB<br>注意！这和<strong>向前缓存</strong>不尽相同。<br>解释起来有点麻烦，我放张图吧…<br><img src="/" alt="--demuxer-max-back-bytes">  </p>
+<blockquote>
+<p><code>--demuxer-hysteresis-secs=10</code></p>
+</blockquote>
+<p>达到 <code>--demuxer-max-bytes</code> 的限制后，直到缓存中剩下多少秒时才重新开始缓冲<br>这可以显著节省功耗（不启用时，会不停缓冲；启用时，会将视频分成好几段缓冲） </p>
+<p>默认值：0 （即禁用缓存滞后）  </p>
+<p>官方手册说设置为 10 对大部分情况都有用  </p>
+<h2 id="内置的-ytdl-hook-脚本相关"><a href="#内置的-ytdl-hook-脚本相关" class="headerlink" title="内置的 ytdl_hook 脚本相关"></a>内置的 ytdl_hook 脚本相关</h2><p>mpv 可以调用 yt-dlp 来增强网络视频播放能力，这依赖内置脚本 ytdl_hook.lua</p>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><h4 id="“安装”-yt-dlp"><a href="#“安装”-yt-dlp" class="headerlink" title="“安装” yt-dlp"></a>“安装” yt-dlp</h4><p>Windows 用户：<br>去 yt-dlp 官方 Github Releases 下载 yt-dlp.exe，将 yt-dlp.exe 放入 mpv.exe 的同路径下即可<br>yt-dlp 官方 Github Releases: <a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp/releases">https://github.com/yt-dlp/yt-dlp/releases</a></p>
+<p>Linux 用户：<br>建议直接看 yt-dlp 的 Wiki：<a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp/wiki/Installation">https://github.com/yt-dlp/yt-dlp/wiki/Installation</a></p>
+<h3 id="ytdl-hook-脚本配置"><a href="#ytdl-hook-脚本配置" class="headerlink" title="ytdl_hook 脚本配置"></a>ytdl_hook 脚本配置</h3><h4 id="常规选项部分"><a href="#常规选项部分" class="headerlink" title="常规选项部分"></a>常规选项部分</h4><p>参见 <a target="_blank" rel="noopener" href="https://mpv.io/manual/master/#options-ytdl">https://mpv.io/manual/master/#options-ytdl</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ytdl=yes</span><br><span class="line"># 启用内置的 ytdl_hook 脚本</span><br><span class="line"># &lt;yes|no&gt;(默认值: yes)</span><br><span class="line"># no 表示不启用</span><br><span class="line"></span><br><span class="line">ytdl-format = bestvideo+bestaudio/best</span><br><span class="line"># 设置直接传递给 youtube-dl 的视频格式/质量，示例即为默认值</span><br><span class="line"># 这部分怎么写应该查看 yt-dlp 的文档，我记得是在这里 https://github.com/yt-dlp/yt-dlp#format-selection  </span><br></pre></td></tr></table></figure>
+<p><strong>默认的配置已经足够使用，非必要不建议更改</strong></p>
+<h4 id="–ytdl-raw-options-部分"><a href="#–ytdl-raw-options-部分" class="headerlink" title="–ytdl-raw-options 部分"></a>–ytdl-raw-options 部分</h4><p><code>--ytdl-raw-options</code> 用于将自定义选项传递给 yt-dlp，可用选项参见 <a target="_blank" rel="noopener" href="https://github.com/yt-dlp/yt-dlp#usage-and-options">https://github.com/yt-dlp/yt-dlp#usage-and-options</a><br>选项应为选项参数键值成对的方式传递(<code>&lt;key&gt;=&lt;value&gt;</code>)，没有参数的选项后面必须加上等号 <code>=</code><br>多个键值对之间用半角逗号”,”隔开，例如：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ytdl-raw-options=write-subs=,force-ipv6=,sub-langs=[zh,en]</span><br></pre></td></tr></table></figure>
+<p>当然，实际使用时，更推荐使用多个 <code>--ytdl-raw-options-append</code>，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ytdl-raw-options-append=write-subs=</span><br><span class="line">ytdl-raw-options-append=force-ipv6=</span><br><span class="line">ytdl-raw-options-append=sub-langs=zh,en</span><br></pre></td></tr></table></figure>
+
+<p>我挑出了几个比较有用的选项，列在下面：<br><strong>注意</strong>：<strong>不要乱加空格美化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 从浏览器导入 cookies，解锁已登录账户的分辨率</span><br><span class="line">ytdl-raw-options-append=cookies-from-browser=firefox</span><br><span class="line"># 示例为导入 Firefox 的 cookies</span><br><span class="line"># 你可以将 firefox 换成你正在使用的其它浏览器名，支持 brave, chrome, chromium, edge, firefox, opera, safari, vivaldi</span><br><span class="line"></span><br><span class="line"># 也可以导入文件的 cookies，只支持绝对路径</span><br><span class="line">#ytdl-raw-options-append=cookies=cookies.txt</span><br><span class="line"></span><br><span class="line"># 如果URL同时指向视频和播放列表（例如B站分p视频），解析为播放列表</span><br><span class="line">ytdl-raw-options-append=yes-playlist=</span><br><span class="line"></span><br><span class="line"># 解析字幕</span><br><span class="line">ytdl-raw-options-append=write-subs=</span><br><span class="line"></span><br><span class="line"># 限制字幕语言，可以使用正则表达式</span><br><span class="line">ytdl-raw-options-append=sub-langs=ai.*,zh.*,en.*</span><br><span class="line"># 其实不用这个选项也足以应对大多数场景</span><br><span class="line"># 放在这里只是作为演示，以及照顾一下需要的用户</span><br></pre></td></tr></table></figure>
+
+<p>[Tips] 你可以命令行运行如下命令来导出 Firefox 浏览器的 cookies 为 <code>cookies.txt</code>，其他浏览器也同理  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yt-dlp --cookies cookies.txt --cookies-from-browser firefox</span><br></pre></td></tr></table></figure>
+
+<h4 id="script-opts-ytdl-hook-conf-部分（–script-opts-部分）"><a href="#script-opts-ytdl-hook-conf-部分（–script-opts-部分）" class="headerlink" title="script-opts&#x2F;ytdl_hook.conf 部分（–script-opts 部分）"></a>script-opts&#x2F;ytdl_hook.conf 部分（–script-opts 部分）</h4><p>mpv 实际上是通过内置的 ytdk_hook 脚本调用 yt-dlp 的，所以类似于其他脚本，它也可以通过在 mpv 设置文件夹的 script-opts 文件夹中新建一个 ytdl_hook.conf 来设置脚本选项</p>
+<p><strong>注意</strong>：ytdl_hook.conf 文件的编码应为 UTF-8，换行应为 LF(Unix)</p>
+<p>所有可用的选项看官方手册：<a target="_blank" rel="noopener" href="https://mpv.io/manual/master/#options-ytdl">https://mpv.io/manual/master/#options-ytdl</a></p>
+<p>大部分情况下，<strong>默认的配置已经足够使用，非必要不建议更改</strong></p>
+<h2 id="代理相关"><a href="#代理相关" class="headerlink" title="代理相关"></a>代理相关</h2><p>听不懂请直接跳过</p>
+<p>TODO…</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Media-Player/" rel="tag"># Media Player</a>
+              <a href="/tags/mpv/" rel="tag"># mpv</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/05/MPC-MPCVR-usage-tutorial/" rel="prev" title="MPC-BE/HC + MPCVR 使用教程">
+                  <i class="fa fa-angle-left"></i> MPC-BE/HC + MPCVR 使用教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yukari0201</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
